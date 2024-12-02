@@ -214,7 +214,7 @@ class TestKmipServer(testtools.TestCase):
             with mock.patch('ssl.SSLContext') as ssl_mock:
                 socket_mock.return_value = a_mock
                 ssl_mock.return_value.wrap_socket.return_value = b_mock
-                ssl_mock.return_value.load_cert_chain = c_mock
+                ssl_mock.return_value.load_cert_chain.return_value = None
 
                 manager_mock.assert_not_called()
                 monitor_mock.assert_not_called()
