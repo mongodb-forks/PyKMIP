@@ -194,6 +194,7 @@ class TestKmipServer(testtools.TestCase):
 
         a_mock = mock.MagicMock()
         b_mock = mock.MagicMock()
+        c_mock = mock.MagicMock()
 
         s = server.KmipServer(
             hostname='127.0.0.1',
@@ -213,6 +214,7 @@ class TestKmipServer(testtools.TestCase):
             with mock.patch('ssl.SSLContext') as ssl_mock:
                 socket_mock.return_value = a_mock
                 ssl_mock.return_value.wrap_socket.return_value = b_mock
+                ssl_mock.return_value.load_cert_chain = c_mock
 
                 manager_mock.assert_not_called()
                 monitor_mock.assert_not_called()
