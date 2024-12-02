@@ -194,7 +194,6 @@ class TestKmipServer(testtools.TestCase):
 
         a_mock = mock.MagicMock()
         b_mock = mock.MagicMock()
-        c_mock = mock.MagicMock()
 
         s = server.KmipServer(
             hostname='127.0.0.1',
@@ -276,6 +275,7 @@ class TestKmipServer(testtools.TestCase):
             with mock.patch('ssl.SSLContext.wrap_socket') as ssl_mock:
                 socket_mock.return_value = a_mock
                 ssl_mock.return_value = b_mock
+                ssl_mock.return_value.load_cert_chain.return_value = None
 
                 test_exception = Exception()
                 b_mock.bind.side_effect = test_exception
