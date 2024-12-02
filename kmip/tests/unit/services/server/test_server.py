@@ -199,7 +199,6 @@ class TestKmipServer(testtools.TestCase):
             hostname='127.0.0.1',
             port=5696,
             auth_suite='Basic',
-            certificate_path='/etc/pykmip/certs/server.crt',
             config_path=None,
             policy_path=None,
             tls_cipher_suites='TLS_RSA_WITH_AES_128_CBC_SHA'
